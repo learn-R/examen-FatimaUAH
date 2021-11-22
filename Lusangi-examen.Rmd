@@ -28,8 +28,8 @@ pacman::p_load(rmarkdown,
                sjPlot)
 ```
 
-```{r, carga_datos, eval=FALSE, include=FALSE}
-datos_proc_esi2020 <- readRDS("~GitHub\examen-FatimaUAH\output\data\datos_proc_esi2020.rds")
+```{r carga_datos, include=FALSE}
+datos_proc_esi2020 <- readRDS ("~GitHub/examen-FatimaUAH/output/data/datos_proc_esi2020.rds")
 
 ```
 

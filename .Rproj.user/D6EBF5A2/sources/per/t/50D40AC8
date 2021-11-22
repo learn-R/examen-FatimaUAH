@@ -3,7 +3,7 @@
     "path": "~/GitHub/examen-FatimaUAH/R/01_proc.R",
     "project_path": "R/01_proc.R",
     "type": "r_source",
-    "hash": "2531470323",
+    "hash": "2570857558",
     "contents": "",
     "dirty": false,
     "created": 1637183705846.0,
@@ -16,11 +16,11 @@
         "scrollLine": "43"
     },
     "folds": "",
-    "lastKnownWriteTime": 1637356539,
+    "lastKnownWriteTime": 1637595041,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1637356539942,
+    "last_content_update": 1637595041,
     "read_only": false,
     "read_only_alternatives": []
 }
