@@ -1,0 +1,8 @@
+"0","datos_proc_esi2020 <- readRDS (""~GitHub/examen-FatimaUAH/output/data/datos_proc_esi2020.rds"")"
+"2","Warning in gzfile(file, ""rb"") :"
+"2","
+ "
+"2"," cannot open compressed file '~GitHub/examen-FatimaUAH/output/data/datos_proc_esi2020.rds', probable reason 'No such file or directory'
+"
+"2","Error in gzfile(file, ""rb"") : cannot open the connection
+"

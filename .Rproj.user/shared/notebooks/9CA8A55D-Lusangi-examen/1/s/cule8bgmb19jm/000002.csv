@@ -1,0 +1,3 @@
+"0","obj_encuesta_esi2020 <- datos_proc_esi2020 %>% "
+"0","    as_survey_design(ids = idrph, "
+"0","                     weights = fact_cal_esi)"
