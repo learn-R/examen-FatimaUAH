@@ -1,0 +1,61 @@
+---
+title: 'Composición de trabajo con contrato en Chile: Duración, salario, sexo y edad'
+subtitle: "Sociología UAH / Prof. Valentina Andrade /Ayudantes: Nicolas Godoy & Dafne Jaime"
+author: "Fátima Lusangi"
+date: "22-11-2021"
+output: 
+  html_document: 
+    highlight: pygments
+    theme: cosmo
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r carga-paquete, eval=FALSE, include=FALSE}
+pacman::p_load(rmarkdown,
+               knitr,
+               tidyverse,
+               haven,
+               magrittr,
+               sjmisc,
+               srvyr, 
+               dplyr, 
+               tidyr,
+               kableExtra,
+               sjPlot)
+```
+
+```{r, carga_datos, eval=FALSE, include=FALSE}
+datos_proc_esi2020 <- readRDS("~GitHub\examen-FatimaUAH\output\data\datos_proc_esi2020.rds")
+
+```
+
+
+# Abstract:
+
+
+# Introducción:
+
+
+# Análisis:
+
+```{r}
+
+```
+
+
+# Conclusión:
+
+
+
+
+Ayudas:
+para formato:
+ *cursiva*
+- **negrita**
+- `codigo`
+- [links](learn-uah.netlify.app)
+(los análisis tengo que ponerlos como echo=FALSE, no con include=false porque desapareceran los resultados del html, esto sirve para los promedios)

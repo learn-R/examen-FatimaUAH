@@ -2,6 +2,7 @@
 
 pacman::p_load(tidyverse,
                haven,
+               magrittr,
                sjmisc,
                srvyr, 
                dplyr, 
@@ -42,7 +43,7 @@ ESI2020 <- haven::read_sav("https://www.ine.cl/docs/default-source/encuesta-supl
  datos_proc_esi2020 <- datos_proc_esi2020 %>% 
     mutate(sexo = case_when(sexo == 1 ~ "hombre" ,
                             sexo == 2 ~ "mujer",
-                            TRUE ~ NA_character_))
+                            TRUE ~ NA_character_)) 
  
  ### 4.2 Filtro Personas en edad de trabajar y Edad en tramos
  
@@ -51,7 +52,9 @@ ESI2020 <- haven::read_sav("https://www.ine.cl/docs/default-source/encuesta-supl
    mutate(edad_en_tramos = case_when(edad > 15 & edad <= 29 ~ "1= joven 15-29",
                                      edad >= 30 & edad <= 59 ~ "2= adulto 30-59",
                                      edad >= 60 ~ "3= adulto mayor 60+",
-                                     TRUE ~ NA_character_)) 
+                                     TRUE ~ NA_character_)) %>% 
+   na.omit()
+ 
  ### 4.3 filtro B8=sí=1, se dejan solo empleos con contrato escrito:
  
  datos_proc_esi2020 <- datos_proc_esi2020 %>% 
@@ -65,7 +68,7 @@ ESI2020 <- haven::read_sav("https://www.ine.cl/docs/default-source/encuesta-supl
                                      d1_monto >= 300000.1 & d1_monto <= 500000 ~ "3= 300000.1-500000",
                                      d1_monto >= 500000.1 & d1_monto <= 1000000 ~ "4= 500000.1-1000000",
                                      d1_monto >= 1000000.1 ~ "5= 1000000.1 +",
-                                     TRUE ~ NA_character_)) 
+                                     TRUE ~ NA_character_))
  frq(datos_proc_esi2020$salario_en_tramos)
  
  ### 4.5 recodificación duración de contrato:
@@ -73,7 +76,8 @@ ESI2020 <- haven::read_sav("https://www.ine.cl/docs/default-source/encuesta-supl
  datos_proc_esi2020 <- datos_proc_esi2020 %>% 
     mutate(duracion_contrato = case_when(b9 == 1 ~ "definido" ,
                                          b9 == 2 ~ "indefinido",
-                                         TRUE ~ NA_character_))
+                                         TRUE ~ NA_character_)) %>% 
+   na.omit()
 
  
  ## 5. Guardar base recortada:
@@ -88,47 +92,47 @@ ESI2020 <- haven::read_sav("https://www.ine.cl/docs/default-source/encuesta-supl
 ## 7. Análisis de datos 
  
 ### 7.1 Tabla duracion de contrato general, poblacional. 
- duracion_contrato <- obj_encuesta_esi2020 %>%
+ duracion_contrato_porcentaje <- obj_encuesta_esi2020 %>%
     group_by(duracion_contrato) %>% 
     summarise(prop = survey_prop(vartype = "ci", level = .95, na.rm = T)) %>% 
     mutate(por = prop*100,
            prop_low = prop_low*100,
            prop_upp = prop_low*100)
  
-    kbl(duracion_contrato) %>%
+    kbl(duracion_contrato_porcentaje) %>%
     kable_styling(bootstrap_options = c("striped", "hover"))
     
 ### 7.2 Tabla salario general, poblacional.
-salario_en_tramos <- obj_encuesta_esi2020 %>%
+salario_en_tramos_porcentajes <- obj_encuesta_esi2020 %>%
        group_by(salario_en_tramos) %>% 
        summarise(prop = survey_prop(vartype = "ci", level = .95, na.rm = T)) %>% 
        mutate(por = prop*100,
               prop_low = prop_low*100,
               prop_upp = prop_low*100)
     
-    kbl(salario_en_tramos) %>%
+    kbl(salario_en_tramos_porcentajes) %>%
        kable_styling(bootstrap_options = c("striped", "hover"))
 
 ### 7.3 tabla sexo en general. 
-    sexo <- obj_encuesta_esi2020 %>%
+    sexo_porcentajes <- obj_encuesta_esi2020 %>%
        group_by(sexo) %>% 
        summarise(prop = survey_prop(vartype = "ci", level = .95, na.rm = T)) %>% 
        mutate(por = prop*100,
               prop_low = prop_low*100,
               prop_upp = prop_low*100)
     
-    kbl(sexo) %>%
+    kbl(sexo_porcentajes) %>%
        kable_styling(bootstrap_options = c("striped", "hover"))  
 
 ### 7.4 tabla edad en tramos en general. 
-  edad_en_tramos <- obj_encuesta_esi2020 %>%
+  edad_en_tramos_porcentajes <- obj_encuesta_esi2020 %>%
        group_by(edad_en_tramos) %>% 
        summarise(prop = survey_prop(vartype = "ci", level = .95, na.rm = T)) %>% 
        mutate(por = prop*100,
               prop_low = prop_low*100,
               prop_upp = prop_low*100)
     
-    kbl(edad_en_tramos) %>%
+    kbl(edad_en_tramos_porcentajes) %>%
        kable_styling(bootstrap_options = c("striped", "hover")) 
 
 ### 7.5 ingreso promedio y mediana de personas con contrato
@@ -145,7 +149,7 @@ salario_en_tramos <- obj_encuesta_esi2020 %>%
     
     obj_encuesta_esi2020 %>% 
       summarize(mediana = srvyr::survey_median(d1_monto, vartype = "ci", level = 95, na.rm=T))
-
+    
 ### 7.6 ingreso medio por sexo
     
    salario_promedio_sexo <- obj_encuesta_esi2020 %>%
@@ -158,7 +162,7 @@ salario_en_tramos <- obj_encuesta_esi2020 %>%
 ### 7.7 tipo de contrato por sexo:
   
     contrato_duracion_sexo <- obj_encuesta_esi2020 %>% 
-     group_by(duracion_contrato,sexo ) %>% 
+     group_by(sexo,duracion_contrato ) %>% 
      summarise(prop = survey_prop(vartype = "ci", na.rm = T), 
                total = survey_total(vartype = "ci", na.rm=T)) %>% 
      mutate(per = prop*100) %>% 
@@ -168,6 +172,8 @@ salario_en_tramos <- obj_encuesta_esi2020 %>%
    
      kbl(contrato_duracion_sexo) %>%
       kable_styling(bootstrap_options = c("striped", "hover"))
+     
+     
 
 ### 7.8 edad en tramo por ingreso medio:
 
@@ -216,7 +222,7 @@ salario_en_tramos <- obj_encuesta_esi2020 %>%
      mutate(per = prop*100) %>% 
      select(salario_en_tramos, edad_en_tramos, per, total) %>% 
      pivot_wider(names_from = "salario_en_tramos", 
-                 values_from = c("per", "total")) 
+                 values_from = c("per", "total"))
    
    kbl(edad_salario_tramos) %>%
      kable_styling(bootstrap_options = c("striped", "hover"))
@@ -224,17 +230,27 @@ salario_en_tramos <- obj_encuesta_esi2020 %>%
 ### 7.12 sexo y salario en tramos
    
    sexo_salario_tramos <- obj_encuesta_esi2020 %>% 
-     group_by(sexo, salario_en_tramos) %>% 
+     group_by(sexo, salario_en_tramos ) %>% 
      summarise(prop = survey_prop(vartype = "ci", na.rm = T), 
                total = survey_total(vartype = "ci", na.rm=T)) %>% 
      mutate(per = prop*100) %>% 
-     select(salario_en_tramos, sexo, per, total) %>% 
+     select(sexo,salario_en_tramos , per, total) %>% 
      pivot_wider(names_from = "salario_en_tramos", 
                  values_from = c("per", "total"))
    
    kbl(sexo_salario_tramos) %>%
      kable_styling(bootstrap_options = c("striped", "hover"))
    
+   
+### 7.13 salario promedio por sexo, intentos gráficos.   
 
+   plot_frq(salario_promedio$salario_promedio)
+            type = c("bar"),
+            title = "grafico")
+
+datos_proc_esi2020 %>% sjplot (datos_proc_esi2020, edad_en_tramos_porcentajes, fun = "grpfrq",
+                  type = "dot", geom.colors = "Set1")
+
+    
 # Idea: factores sociodemográficos que afectan el sueldo y duración de contrato a nivel poblacional
 # tengo que filtrar por personas con contrato, seleccionar las variables de sueldo y duración de contrato y evaluarlas según variables sociodemográficas, sexo, edad y nivel educacional.
