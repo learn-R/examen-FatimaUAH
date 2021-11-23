@@ -44,10 +44,14 @@ obj_encuesta_esi2020 <- datos_proc_esi2020 %>%
 
 
 ## Abstract:
-
+El objetivo de este análisis cuantitativo poblacional es conocer como se distribuye y compone el empleo con contrato escrito en Chile 2020, respecto de la composición de la duración de el contrato, distribución sexual, etaria y análisis salarial neto. Para ello se procesarán datos secundarios de la [Encuesta Suplementaria de Ingresos 2020](https://www.ine.cl/estadisticas/sociales/ingresos-y-gastos/encuesta-suplementaria-de-ingresos) de donde extraemos los datos filtrando a aquellas personas que responden tener un empleo y que este sea por contrato escrito, que además reporte su salario neto y duración de contrato.
+Los principales resultados confirman brecha salarial entre mujeres y hombres con empleos de contrato escrito, la edad y la duración de contrato influyen en el salario neto de las personas.
 
 ## Introducción:
-
+Este análisis cuantitativo tiene por objetivo conocer la composición y distribución del empleo con contrato escrito en Chile, para ello utilizaré la [Encuesta Suplementaria de Ingresos 2020 (en adelante ESI 2020)](https://www.ine.cl/estadisticas/sociales/ingresos-y-gastos/encuesta-suplementaria-de-ingresos) que se realiza a finde cada año junto con la ENE para obtener información sobre las personas *ocupadas* de aquí he extraido un subset de datos y variables que he procesado para conocer la muestra y realizar análisis poblacional. 
+Las variables escogidas son *edad*, que se ha recodificado a tramos según la definición del [INE](https://www.ine.cl/ine-ciudadano/definiciones-estadisticas/poblacion/caracteristicas-de-la-poblacion), *sexo*, *duración de contrato* (donde se recodificó el nombre de las categorías de respuesta), *salario neto* que se usó por sí misma y recodificada en tramos para facilitar el análisis y el *identificador personal* y *factor de expansión* para realizar el análisis de muestra compleja a nivel de población.
+El objetivo con estas variables es ver como se distribuye y compone el empleo con contrato escrito en Chile 2020. Composición de la duración de el contrato, distribución sexual y etaria y análisis salarial neto, a nivel poblacional.
+Se ha filtrado la base da datos para tener datos más precisos seleccionando aquellos casos en que se ha respondido a las preguntas de tener un contrato escrito, indicar su salario neto y la duración de su contrato, por tanto en este caso no tendremos datos perdidos.
 
 ## Análisis:
 
@@ -145,13 +149,5 @@ En la tabla 3 vemos el salario en tramos respecto de la duración del contrato a
 
 ## Conclusión:
 
+Luego de analizar los datos correspondientes a personas con contratos escritos a nivel poblacional y de muestra a partir de la base de datos [ESI 2020](https://www.ine.cl/docs/default-source/encuesta-suplementaria-de-ingresos/bbdd/spss_esi/2020/esi-2020---personas.sav?sfvrsn=a730ce58_4&download=true) y que respondieron tanto a la duración de su contrato como su salario, puedo concluir que la edad de las personas determina su nivel de ingreso, aquellos que se encuentran en el tramo adulto es decir de 30 a 59 años y tienen contrato estable no solo tienen mejores salarios sino también son quienes más contratos indefinidos concentran, mientras que, si bien, los contratos definidos son minoría (21%) estos están en mayor medida compuestos por personas jovenes y adultos mayores que en el grupo de duración indefinida. Existe brecha salarial sexual, entre quienes tienen contratos escritos, siendo los hombres quienes más salario neto acumulan. Existe relación entre salario neto y la duración del contrato, tendiendo a tener mejor salario quienes tienen contrato indefinido.
 
-
-
-Ayudas:
-para formato:
- *cursiva*
-- **negrita**
-- `codigo`
-- [links](learn-uah.netlify.app)
-(los análisis tengo que ponerlos como echo=FALSE, no con include=false porque desapareceran los resultados del html, esto sirve para los promedios)

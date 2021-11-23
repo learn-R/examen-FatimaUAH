@@ -164,9 +164,11 @@ pre code {
 
 <div id="abstract" class="section level2">
 <h2>Abstract:</h2>
+<p>El objetivo de este análisis cuantitativo poblacional es conocer como se distribuye y compone el empleo con contrato escrito en Chile 2020, respecto de la composición de la duración de el contrato, distribución sexual, etaria y análisis salarial neto. Para ello se procesarán datos secundarios de la <a href="https://www.ine.cl/estadisticas/sociales/ingresos-y-gastos/encuesta-suplementaria-de-ingresos">Encuesta Suplementaria de Ingresos 2020</a> de donde extraemos los datos filtrando a aquellas personas que responden tener un empleo y que este sea por contrato escrito, que además reporte su salario neto y duración de contrato. Los principales resultados confirman brecha salarial entre mujeres y hombres con empleos de contrato escrito, la edad y la duración de contrato influyen en el salario neto de las personas.</p>
 </div>
 <div id="introducción" class="section level2">
 <h2>Introducción:</h2>
+<p>Este análisis cuantitativo tiene por objetivo conocer la composición y distribución del empleo con contrato escrito en Chile, para ello utilizaré la <a href="https://www.ine.cl/estadisticas/sociales/ingresos-y-gastos/encuesta-suplementaria-de-ingresos">Encuesta Suplementaria de Ingresos 2020 (en adelante ESI 2020)</a> que se realiza a finde cada año junto con la ENE para obtener información sobre las personas <em>ocupadas</em> de aquí he extraido un subset de datos y variables que he procesado para conocer la muestra y realizar análisis poblacional. Las variables escogidas son <em>edad</em>, que se ha recodificado a tramos según la definición del <a href="https://www.ine.cl/ine-ciudadano/definiciones-estadisticas/poblacion/caracteristicas-de-la-poblacion">INE</a>, <em>sexo</em>, <em>duración de contrato</em> (donde se recodificó el nombre de las categorías de respuesta), <em>salario neto</em> que se usó por sí misma y recodificada en tramos para facilitar el análisis y el <em>identificador personal</em> y <em>factor de expansión</em> para realizar el análisis de muestra compleja a nivel de población. El objetivo con estas variables es ver como se distribuye y compone el empleo con contrato escrito en Chile 2020. Composición de la duración de el contrato, distribución sexual y etaria y análisis salarial neto, a nivel poblacional. Se ha filtrado la base da datos para tener datos más precisos seleccionando aquellos casos en que se ha respondido a las preguntas de tener un contrato escrito, indicar su salario neto y la duración de su contrato, por tanto en este caso no tendremos datos perdidos.</p>
 </div>
 <div id="análisis" class="section level2">
 <h2>Análisis:</h2>
@@ -221,11 +223,140 @@ mujer
 </tbody>
 </table>
 <p>Podemos observar en la tabla que existe una brecha de género salarial en personas con contrato escrito ya que en promedio las mujeres tienen un salario neto de $625.320,1 mientras que en promedio los hombres tienen un salario neto de $760.325,4.</p>
+<p><strong>Tabla 2:</strong> Duración del contrato escrito según sexo</p>
+<table class="table table-striped table-hover" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+sexo
+</th>
+<th style="text-align:right;">
+definido
+</th>
+<th style="text-align:right;">
+indefinido
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+hombre
+</td>
+<td style="text-align:right;">
+21.09195
+</td>
+<td style="text-align:right;">
+78.90805
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+mujer
+</td>
+<td style="text-align:right;">
+21.02958
+</td>
+<td style="text-align:right;">
+78.97042
+</td>
+</tr>
+</tbody>
+</table>
+<p>En este punto respecto de la tabla 2 vemos que no hay diferencias significativas entre la duración de contrato definido o indefinido entre hombres y mujeres, la tendencia poblacional general es que hay al rededor del 21% de contratos definidos y 79% de contratos indefinidos.</p>
+</div>
+<div id="duración-de-contrato-y-salario" class="section level4">
+<h4>Duración de contrato y salario</h4>
+<p><strong>Tabla 3:</strong> Salario en tramos según ttipo de contrato</p>
+<table class="table table-striped table-hover" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+salario_en_tramos
+</th>
+<th style="text-align:right;">
+definido
+</th>
+<th style="text-align:right;">
+indefinido
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+0= 0
+</td>
+<td style="text-align:right;">
+0.3041828
+</td>
+<td style="text-align:right;">
+2.464112
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1= 1-150000
+</td>
+<td style="text-align:right;">
+2.7755332
+</td>
+<td style="text-align:right;">
+1.071479
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2= 150000.1-300000
+</td>
+<td style="text-align:right;">
+15.6326301
+</td>
+<td style="text-align:right;">
+10.376800
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3= 300000.1-500000
+</td>
+<td style="text-align:right;">
+40.3005033
+</td>
+<td style="text-align:right;">
+36.645880
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4= 500000.1-1000000
+</td>
+<td style="text-align:right;">
+26.0849033
+</td>
+<td style="text-align:right;">
+29.748817
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+5= 1000000.1 +
+</td>
+<td style="text-align:right;">
+14.9022473
+</td>
+<td style="text-align:right;">
+19.692912
+</td>
+</tr>
+</tbody>
+</table>
+<p>En la tabla 3 vemos el salario en tramos respecto de la duración del contrato a nivel poblacionaly vemos que en los tramos de salario más bajos, hasta $300.000 se concentran mayor porcentaje de personas con contrato definido que indefinido y hacia los salarios más altos, por sobre los $300.000,1 se tiende a concentrar en contratos indefinidos. Respecto de cada tipo de contrato aquellos salarios de $300.000,1 a $500.000 en ambos tipos de contrato representan el porcentaje más alto, que coincide con ser el tramo que contiene a la mediana que antes entregamos $496.653 (y con la idea de que la media puede estar sesgada por los valores extremos), es decir el 50% de la población recibe un salario neto mayor y menor a ese monto.</p>
 </div>
 </div>
 <div id="conclusión" class="section level2">
 <h2>Conclusión:</h2>
-<p>Ayudas: para formato: <em>cursiva</em> - <strong>negrita</strong> - <code>codigo</code> - <a href="learn-uah.netlify.app">links</a> (los análisis tengo que ponerlos como echo=FALSE, no con include=false porque desapareceran los resultados del html, esto sirve para los promedios)</p>
+<p>Luego de analizar los datos correspondientes a personas con contratos escritos a nivel poblacional y de muestra a partir de la base de datos <a href="https://www.ine.cl/docs/default-source/encuesta-suplementaria-de-ingresos/bbdd/spss_esi/2020/esi-2020---personas.sav?sfvrsn=a730ce58_4&amp;download=true">ESI 2020</a> y que respondieron tanto a la duración de su contrato como su salario, puedo concluir que la edad de las personas determina su nivel de ingreso, aquellos que se encuentran en el tramo adulto es decir de 30 a 59 años y tienen contrato estable no solo tienen mejores salarios sino también son quienes más contratos indefinidos concentran, mientras que, si bien, los contratos definidos son minoría (21%) estos están en mayor medida compuestos por personas jovenes y adultos mayores que en el grupo de duración indefinida. Existe brecha salarial sexual, entre quienes tienen contratos escritos, siendo los hombres quienes más salario neto acumulan. Existe relación entre salario neto y la duración del contrato, tendiendo a tener mejor salario quienes tienen contrato indefinido.</p>
 </div>
 
 
