@@ -1,0 +1,4 @@
+"0","sjPlot::plot_grpfrq(datos_proc_esi2020$salario_en_tramos, datos_proc_esi2020$duracion_contrato,"
+"0","               type = c(""bar""),"
+"0","               show.n = FALSE,"
+"0","               title = ""Duracion de contrato y salario"")"

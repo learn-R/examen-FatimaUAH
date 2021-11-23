@@ -1,0 +1,5 @@
+"0","obj_encuesta_esi2020 %>% "
+"0","      summarize(salario_promedio = srvyr::survey_mean(salario, vartype = ""ci"", level = 95, na.rm=T))"
+"2","Warning in qt(a, df = df) :"
+"2"," NaNs produced
+"

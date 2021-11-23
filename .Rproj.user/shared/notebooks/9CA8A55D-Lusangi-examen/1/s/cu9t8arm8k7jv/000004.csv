@@ -1,0 +1,6 @@
+"0","salario_promedio_sexo <- obj_encuesta_esi2020 %>%"
+"0","      group_by(sexo) %>% "
+"0","      summarise(salario_promedio_sexo = survey_mean(salario, na.rm=T))"
+"0","   "
+"0","   kbl(salario_promedio_sexo) %>%"
+"0","     kable_styling(bootstrap_options = c(""striped"", ""hover"")) "
