@@ -1,0 +1,4 @@
+"0","sjPlot:: plot_frq(datos_proc_esi2020, edad_en_tramos,"
+"0","             show.n = FALSE,"
+"0","             title = ""porcentaje de edad en tramos"","
+"0","             type = c(""bar""))"

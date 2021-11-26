@@ -1,0 +1,5 @@
+"0","sjPlot:: plot_xtab(datos_proc_esi2020$sexo, datos_proc_esi2020$edad_en_tramos,"
+"0","               type = c(""bar""),"
+"0","               show.n = FALSE,"
+"0","               title = ""Composición sexo y edad"")"
+"0",""

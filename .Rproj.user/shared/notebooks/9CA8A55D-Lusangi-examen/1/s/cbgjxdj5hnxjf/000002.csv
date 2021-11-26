@@ -1,0 +1,7 @@
+"0","plot_xtab(datos_proc_esi2020$sexo, datos_proc_esi2020$edad_en_tramos,"
+"0","               type = c(""bar""),"
+"0","               show.n = FALSE,"
+"0","               title = ""Composición sexo y edad"")"
+"2","Warning:"
+"2"," `guides(<scale> = FALSE)` is deprecated. Please use `guides(<scale> = ""none"")` instead.
+"
